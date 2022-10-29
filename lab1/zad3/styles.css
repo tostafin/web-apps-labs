@@ -1,0 +1,46 @@
+body {
+    font-family: Tahoma, "Lucida Grande", Arial, sans-serif;
+    font-size: 62.5%;
+}
+
+h1 {
+    font-size: 2.4em;
+}
+
+h2 {
+    font-size: 1.8em;
+}
+
+h3 {
+    font-size: 1.4em;
+}
+
+ul, ol {
+    font-size: 1.2em;
+    line-height: 130%;
+}
+p {
+    font-size: 1.2em;
+}
+
+ul {
+    list-style: square;
+}
+#main-header {
+	background-color: #14556B;
+	color: white;
+	font-size: 40px;
+}
+.side-note {
+    float: right;
+    background-color: goldenrod;
+    font-size: 10px;
+    color: black;
+    width: 20%;
+}
+#center-header {
+    text-align: center;
+}
+.main-text {
+    font-size: 20px;
+}

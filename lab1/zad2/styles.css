@@ -1,0 +1,58 @@
+html {
+    height: 100%;
+}
+body {
+    min-height: 100%;
+}
+.tops {
+    grid-area: tops;
+    background-color: dimgrey;
+}
+.homepage {
+    grid-area: homepage;
+    background-color: darkgray;
+}
+.gallery {
+    grid-area: gallery;
+    background-color: white;
+}
+.location {
+    grid-area: location;
+    background-color: darkgrey;
+}
+.contact {
+    grid-area: contact;
+    background-color: white;
+}
+.lefts {
+    grid-area: lefts;
+    background-color: white;
+}
+.pagecontent {
+    grid-area: pagecontent;
+    background-color: white;
+}
+.footers {
+    grid-area: footers;
+    background-color: dimgrey;
+}
+.grid-container {
+    display: grid;
+    grid-template-areas:
+        'tops tops tops tops'
+        'tops tops tops tops'
+        'homepage gallery location contact'
+        'lefts pagecontent pagecontent pagecontent'
+        'lefts pagecontent pagecontent pagecontent'
+        'lefts pagecontent pagecontent pagecontent'
+        'lefts pagecontent pagecontent pagecontent'
+        'footers footers footers footers';
+    grid-gap: 2px;
+    background-color: grey;
+    padding: 10px;
+}
+.grid-container > div {
+    text-align: center;
+    padding: 20px 0;
+    font-size: 30px;
+}

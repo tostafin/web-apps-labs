@@ -1,0 +1,29 @@
+.flex-container-1 {
+    display: flex;
+    align-items: stretch;
+}
+.flex-container-2 {
+    display: flex;
+    align-items: stretch;
+}
+.flex-container-1 > div {
+    color: white;
+    margin: 10px;
+    line-height: 75px;
+}
+.flex-container-2 > div {
+    margin: 10px;
+    line-height: 75px;
+    flex: 1;
+}
+.red {
+    background-color: red;
+    flex-grow: 1;
+}
+.blue {
+    background-color: blue;
+    flex-grow: 3;
+}
+.yellow {
+    background-color: yellow;
+}

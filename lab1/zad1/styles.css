@@ -1,0 +1,149 @@
+#first-p {
+    background-color: red;
+    font-family: "Times New Roman", Times, serif;
+    color: white;
+    text-align: center;
+    border-style: solid;
+    border-color: black;
+    margin-bottom: 50px;
+}
+#second-p {
+    background-color: deepskyblue;
+    height: 50px;
+    width: 70px;
+    overflow: scroll;
+    border-style: dotted;
+    border-color: aquamarine;
+}
+#third-p {
+    background-color: green;
+    font-family: "Lucida Console", "Courier New", monospace;
+    height: 50px;
+    width: 80px;
+    overflow: auto;
+    border-style: groove;
+    border-color: chartreuse;
+    margin-top: 70px;
+    margin-bottom: 100px;
+}
+#fourth-p {
+    background-color: yellow;
+    font-style: italic;
+    border-style: inset;
+}
+
+#table-1 {
+    width: 100%;
+    height: 250px;
+    border: 2px solid white;
+    border-collapse: collapse;
+    margin-bottom: 25px;
+}
+#table-1 th {
+    border-width: 2px 2px 5px 2px;
+    border-style: solid;
+    border-color: white;
+    border-collapse: collapse;
+}
+#table-1 td {
+    border: 2px solid white;
+    border-collapse: collapse;
+}
+#first-row-1 {
+    background-color: deepskyblue;
+    border-bottom-width: 5px;
+}
+.second-and-fourth-row {
+    background-color: lightblue;
+}
+.third-and-fifth-row {
+    background-color: azure;
+}
+.no-left-border {
+    border-left: none;
+}
+.no-right-border {
+    border-right: none;
+}
+#table-2 {
+    width: 100%;
+    height: 250px;
+    border: 3px black solid;
+    border-collapse: collapse;
+    margin-bottom: 150px;
+}
+#table-2 th, td {
+    border: 3px black solid;
+    border-collapse: collapse;
+}
+#first-row-2 {
+    background-color: grey;
+}
+.other-rows-2 {
+    background-color: darkgrey;
+}
+#no-bottom-border {
+    border-bottom: none;
+}
+#no-top-border {
+    border-top: none;
+}
+#img-1 {
+    float: left;
+    width: 100px;
+    height: 100px;
+    padding-right: 10px;
+}
+
+#img-2 {
+    float:right;
+    width: 100px;
+    height: 100px;
+    padding-left: 10px;
+}
+#three-images * {
+    width: 100px;
+    height: 100px;
+}
+#img-3 {
+    position: static;
+    margin-right: 100px;
+}
+#img-4 {
+    position: relative;
+}
+#img-5 {
+    position: absolute;
+    left: 100px;
+}
+#europe {
+    background-image: url("images/zad1-6.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    font-size: 50px;
+}
+#asia {
+    background-color: red;
+}
+#day {
+    position: relative;
+}
+#month {
+    float: right;
+    position: absolute;
+    right: auto;
+}
+input, select {
+    margin-bottom: 15px;
+}
+#registration-form {
+    color: darkgoldenrod;
+    background-color: navy;
+    background-size: cover;
+}
+.top-and-bottom-form {
+    width: 100%;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background-color: orange;
+}

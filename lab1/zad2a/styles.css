@@ -1,0 +1,32 @@
+.Jeden {
+    grid-area: 1 / 1 / 2 / 3;
+}
+.Dwa {
+    grid-area: 1 / 2 / 3 / 4;
+}
+.Trzy {
+    grid-area: 2 / 1 / 5 / 2;
+}
+.Cztery {
+    grid-area: 3 / 3 / 4 / 4;
+}
+.Pięć {
+    grid-area: 4 / 2 / 5 / 3;
+}
+.Sześć {
+    grid-area: 4 / 3 / 5 / 4;
+}
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: minmax(100px, auto);
+    grid-gap: 10px;
+    background-color: white;
+}
+.grid-container > div {
+    background-color: palegoldenrod;
+    color: darkgoldenrod;
+    border: 2px solid darkgoldenrod;
+    font-size: 30px;
+    opacity: 0.5;
+}
