@@ -1,0 +1,27 @@
+<div class="new-post">
+  <label for="new-userId">User Id: </label>
+  <input id="new-userId" #postUserId>
+
+  <label for="new-title">Title: </label>
+  <input id="new-title" #postTitle>
+
+  <label for="new-body">Body: </label>
+  <input id="new-body" #postBody>
+
+  <button class="add-button"
+          (click)="add(postUserId.value, postTitle.value, postBody.value); postUserId.value=''; postTitle.value=''; postBody.value=''">
+    Dodaj post
+  </button>
+</div>
+<div class="posts-container" *ngFor="let post of posts">
+  <div class="post-wrapper">
+    <div class="post-header">
+      <div class="user-id-and-title">
+        <div class="user-id">{{post.userId}}</div>
+        <div class="title">{{post.title | uppercase}}</div>
+      </div>
+      <div class="post-no">Post nr {{post.id}}</div>
+    </div>
+    <div class="post-body">{{post.body}}</div>
+  </div>
+</div>

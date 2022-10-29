@@ -1,0 +1,11 @@
+<h2>Kliknij w dane zdjęcie, aby zobaczyć szczegóły.</h2>
+<div class="photos-container" *ngFor="let photo of photos">
+  <div class="photo-wrapper">
+    <figure>
+      <img routerLink="/photos/{{photo.id}}" src="{{photo.thumbnailUrl}}" alt="photo">
+      <figcaption>{{photo.title}}</figcaption>
+      <figcaption>Zdjęcie nr {{photo.id}}</figcaption>
+      <figcaption>Album nr {{photo.albumId}}</figcaption>
+    </figure>
+  </div>
+</div>

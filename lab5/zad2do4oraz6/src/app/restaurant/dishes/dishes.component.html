@@ -1,0 +1,152 @@
+<app-header></app-header>
+<div class="filter">
+  <h1>Filtry</h1>
+  <div class="cuisine-filter">
+    Kuchnia:
+    <ul>
+      <li *ngFor="let cuisine of uniqueCuisines">
+        <input (change)="filterCuisine(cuisine)" type="checkbox">{{cuisine}}
+      </li>
+    </ul>
+  </div>
+  <div class="cuisine-filter">
+    Cena:
+    <label>Od:
+      <input type="number"
+             min="{{orderDetailsService.roundNum(orderDetailsService.minPrice * orderDetailsService.exchangeRate)}}"
+             max="{{orderDetailsService.roundNum(orderDetailsService.maxPrice * orderDetailsService.exchangeRate)}}"
+             (change)="filterDishes()"
+             [(ngModel)]="orderDetailsService.filterMinPrice">
+    </label>
+    <label>Do:
+      <input type="number"
+             min="{{orderDetailsService.roundNum(orderDetailsService.minPrice * orderDetailsService.exchangeRate)}}"
+             max="{{orderDetailsService.roundNum(orderDetailsService.maxPrice * orderDetailsService.exchangeRate)}}"
+             (change)="filterDishes()"
+             [(ngModel)]="orderDetailsService.filterMaxPrice">
+    </label>
+  </div>
+  <div class="cuisine-filter">
+    Ocena:
+    <ul class="stars">
+      <li>
+        <input type="checkbox" (change)="filterRating(1)">
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>
+      </li>
+      <li>
+        <input type="checkbox" (change)="filterRating(2)">
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>
+      </li>
+      <li>
+        <input type="checkbox" (change)="filterRating(3)">
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>
+      </li>
+      <li>
+        <input type="checkbox" (change)="filterRating(4)">
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star"></span>
+      </li>
+      <li>
+        <input type="checkbox" (change)="filterRating(5)">
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+      </li>
+    </ul>
+  </div>
+  <div class="cuisine-filter">
+    Kategoria dania:
+    <ul>
+      <li *ngFor="let category of uniqueCategories">
+        <input (change)="filterCategories(category)" type="checkbox">{{category}}
+      </li>
+    </ul>
+  </div>
+</div>
+<div class="pagination">
+  <ul>
+    <li class="page-num-buttons-lis first-li">Liczba dań na stronie:</li>
+    <li class="page-num-buttons-lis" *ngFor="let num of dishesNumArr">
+      <button class="page-num-buttons" [disabled]="numOfDishes === num" (click)="onNumOfPages(num)">{{num}}</button>
+    </li>
+  </ul>
+  <ul>
+    <li class="pagination-lis first-li">Strona:</li>
+    <li class="pagination-lis" *ngFor="let num of pages">
+      <button [disabled]="currPage === num" class="pagination-buttons" (click)="changeCurrPage(num)">{{num}}</button>
+    </li>
+  </ul>
+</div>
+<section class="flex-container">
+  <div class="card"
+       *ngFor="let dish of dishesFilteredComp"
+       [ngClass]="{'most-expensive': dish.name === mostExpensiveDish, 'cheapest': dish.name === cheapestDish}">
+    <picture>
+      <source routerLink="/dishes/{{getDishUrl(dish.name)}}" media="(max-width): 600px"
+              srcset="{{dish.pictures[2]}}">
+      <source routerLink="/dishes/{{getDishUrl(dish.name)}}" media="(max-width): 800px"
+              srcset="{{dish.pictures[1]}}">
+      <img routerLink="/dishes/{{getDishUrl(dish.name)}}" src="{{dish.pictures[0]}}" alt="picture">
+    </picture>
+    <div class="desc">
+      <ul>
+        <li class="categories" *ngFor="let category of dish.typeAndCategory">{{category}}</li>
+      </ul>
+      <h1>{{dish.name | uppercase}}</h1>
+      <div class="cuisine-and-reviews">
+        <div class="cuisine">Kuchnia {{dish.cuisine | uppercase}}</div>
+
+      </div>
+      <h3>Składniki:</h3>
+      <ul>
+        <li class="ingredients" *ngFor="let ingredient of dish.ingredients">{{ingredient}}</li>
+      </ul>
+      <div class="description">
+        <h3>Opis: </h3>{{dish.description}}
+      </div>
+      <hr>
+      <div class="bottom">
+        <div class="price">
+          Cena: {{orderDetailsService.roundNum(dish.price * orderDetailsService.exchangeRate)}} {{orderDetailsService.currCurrency}}
+          <button class="delete-dish" (click)="deleteDish(dish)">Usuń</button>
+        </div>
+        <div class="buttons-and-cnt">
+          <div class="buttons-container">
+            <button (click)="orderDetailsService.removeOrder(dish)"
+                    [hidden]="orderDetailsService.checkIfMinDishCnt(dish)">–
+            </button>
+            <span>{{orderDetailsService.dishesCnt[dish.name]}}</span>
+            <button (click)="orderDetailsService.addOrder(dish)" [hidden]="orderDetailsService.checkIfMaxDishCnt(dish)">
+              +
+            </button>
+          </div>
+          <div class="dish-message" *ngIf="orderDetailsService.dishesCnt[dish.name] !== dish.maxDishesPerDay"
+               [ngClass]="{'few-dishes': dish.maxDishesPerDay - orderDetailsService.dishesCnt[dish.name] < 4}">Liczba
+            dostępnych
+            dań: {{dish.maxDishesPerDay - orderDetailsService.dishesCnt[dish.name]}}</div>
+          <div class="dish-message" *ngIf="orderDetailsService.dishesCnt[dish.name] === dish.maxDishesPerDay">Wybrano
+            maksymalną liczbę
+            dań!
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

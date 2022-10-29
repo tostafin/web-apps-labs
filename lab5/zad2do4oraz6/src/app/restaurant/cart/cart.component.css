@@ -1,0 +1,16 @@
+:host {
+  display: block;
+  background-color: #a2822c;
+  height: 93vh;
+}
+
+.cart-container {
+  color: white;
+  padding-left: 1em;
+  padding-top: 1em;
+}
+
+li {
+  padding: 1em 0;
+  list-style: none;
+}

@@ -1,0 +1,86 @@
+:host {
+  background: url("https://drive.google.com/uc?export=view&id=1L33TN3Ny1vL_HhPwQhUrHLlGEOyqLs3g") no-repeat center center fixed;
+  background-size: cover;
+  /*overflow: hidden;*/
+  display: block;
+  height: 93vh;
+}
+
+.homepage-container {
+  /*display: flex;*/
+  /*flex-direction: column;*/
+  color: white;
+  position: relative;
+  left: 5%;
+  background-color: black;
+  opacity: 0.8;
+  width: 35em;
+  padding: 0 1em;
+  height: 93vh;
+}
+
+.homepage-container > .welcome {
+  margin-bottom: 2em;
+  padding-top: 1em;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.homepage-container > .description {
+  text-align: justify;
+  text-justify: inter-word;
+  margin-bottom: 2em;
+}
+
+.contact {
+  margin-bottom: 2em;
+}
+
+.contact > h3 {
+  margin-bottom: .5em;
+}
+
+.contact ul {
+  list-style: none;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.map {
+  text-align: center;
+}
+
+.map-frame {
+  border:0;
+  width: 100%;
+  height: 50vh;
+}
+
+@media (max-height: 900px) {
+  :host {
+    background-image: url("https://drive.google.com/uc?export=view&id=1J5isH5uzQMCSnMxXtNlVxxml5qo-tEQS");
+  }
+
+  .homepage-container {
+    font-size: 1.5vh;
+  }
+}
+
+@media (max-width: 650px) {
+  :host {
+    background-image: url("https://drive.google.com/uc?export=view&id=1gniHeLVuWYSfrVRx__gj7aYT0wb87UXR");
+  }
+
+  .homepage-container {
+    font-size: 2.3vw;
+  }
+}
+
+@media (max-width: 550px) {
+  .homepage-container {
+    font-size: 2.7vw;
+    width: 80vw;
+  }
+}

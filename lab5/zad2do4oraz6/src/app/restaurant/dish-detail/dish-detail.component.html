@@ -1,0 +1,139 @@
+<div class="buttons-container">
+  <button class="delete-button" (click)="deleteDish()">Usuń danie</button>
+  <button *ngIf="!editingDish; else closeDishEdit" class="edit-button" (click)="editDish()">Edytuj danie</button>
+  <ng-template #closeDishEdit>
+    <button class="edit-button" (click)="editDish()">Zamknij edycję dania</button>
+  </ng-template>
+  <button class="back-button" (click)="goBack()">Powrót do listy dań</button>
+</div>
+<div class="dish-detail-container" *ngIf="dish != undefined">
+  <div class="pictures-container">
+    <picture>
+      <source media="(max-width): 600px" srcset="{{dish.pictures[2]}}">
+      <source media="(max-width): 800px" srcset="{{dish.pictures[1]}}">
+      <img src="{{dish.pictures[0]}}" alt="picture1">
+    </picture>
+    <picture>
+      <source media="(max-width): 600px" srcset="{{dish.pictures[5]}}">
+      <source media="(max-width): 800px" srcset="{{dish.pictures[4]}}">
+      <img src="{{dish.pictures[3]}}" alt="picture2">
+    </picture>
+  </div>
+  <div class="edit-dish" *ngIf="editingDish">
+    <app-edit-dish class="info-container" [dish]="dish"></app-edit-dish>
+  </div>
+  <div class="info-container" *ngIf="!editingDish">
+    <h1 class="title">{{dish.name | uppercase}}</h1>
+    <div class="underline"></div>
+    <div class="description">
+      {{dish.description}}
+    </div>
+    <div class="underline"></div>
+    <div class="ingredients" *ngFor="let category of dish.typeAndCategory">
+      | {{category | uppercase}} |
+    </div>
+    <div class="underline"></div>
+    <div class="categories">
+      <span class="bold">Składniki:</span>
+      <ul>
+        <li *ngFor="let ingredients of dish.ingredients">{{ingredients}}</li>
+      </ul>
+    </div>
+    <div class="underline"></div>
+    <div class="price">
+      <span
+        class="bold">Cena: </span>{{orderDetailsService.roundNum(dish.price * orderDetailsService.exchangeRate)}} {{orderDetailsService.currCurrency}}
+    </div>
+    <div class="underline"></div>
+    <div class="rating">
+      <div class="reviews">Ocena:
+        <span [ngClass]="{'checked': ratingService.ratings[dish.name] >= 1}" class="fa fa-star"
+              (click)="ratingService.updateRating(dish, 1)"></span>
+        <span [ngClass]="{'checked': ratingService.ratings[dish.name] >= 2}" class="fa fa-star"
+              (click)="ratingService.updateRating(dish, 2)"></span>
+        <span [ngClass]="{'checked': ratingService.ratings[dish.name] >= 3}" class="fa fa-star"
+              (click)="ratingService.updateRating(dish, 3)"></span>
+        <span [ngClass]="{'checked': ratingService.ratings[dish.name] >= 4}" class="fa fa-star"
+              (click)="ratingService.updateRating(dish, 4)"></span>
+        <span [ngClass]="{'checked': ratingService.ratings[dish.name] >= 5}" class="fa fa-star"
+              (click)="ratingService.updateRating(dish, 5)"></span>
+      </div>
+      <div *ngIf="ratingService.numOfRatings != 0; else noRatings" class="stars-cnt">
+        <p>Średnia ocena: {{ratingService.meanRatings[dish.name]}}</p>
+        <p>Liczba ocen: {{ratingService.allRatings[dish.name].length}}</p>
+      </div>
+      <ng-template #noRatings>Brak ocen</ng-template>
+    </div>
+    <div class="underline"></div>
+    <div class="buttons-and-cnt">
+      <div class="dish-buttons-container">
+        <button (click)="orderDetailsService.removeOrder(dish)" [hidden]="orderDetailsService.checkIfMinDishCnt(dish)">
+          –
+        </button>
+        <span>{{orderDetailsService.dishesCnt[dish.name]}}</span>
+        <button (click)="orderDetailsService.addOrder(dish)" [hidden]="orderDetailsService.checkIfMaxDishCnt(dish)">+
+        </button>
+      </div>
+      <div class="dish-message" *ngIf="orderDetailsService.dishesCnt[dish.name] !== dish.maxDishesPerDay"
+           [ngClass]="{'few-dishes': dish.maxDishesPerDay - orderDetailsService.dishesCnt[dish.name] < 4}">Liczba
+        dostępnych
+        dań: {{dish.maxDishesPerDay - orderDetailsService.dishesCnt[dish.name]}}</div>
+      <div class="dish-message" *ngIf="orderDetailsService.dishesCnt[dish.name] === dish.maxDishesPerDay">Wybrano
+        maksymalną liczbę
+        dań!
+      </div>
+    </div>
+    <div class="underline"></div>
+    <div class="form-href">
+      <p>Recenzje dania</p>
+      <p class="scroll-arrow" (click)="scroll(reviewsContainer)">↓</p>
+    </div>
+  </div>
+</div>
+<div class="reviews-container">
+  <div class="form-container">
+    <form [formGroup]="reviewForm" (ngSubmit)="onSubmit()">
+      <h2>Dodaj nową recenzję</h2>
+      <label for="nick">Nick: </label>
+      <input id="nick" type="text" formControlName="nick" required>
+
+      <label for="name">Nazwa: </label>
+      <input id="name" type="text" formControlName="name" required>
+
+      <label for="description">Opis: </label>
+      <textarea id="description" type="text" formControlName="description" required></textarea>
+
+      <label for="date">Data zakupu: </label>
+      <input id="date" type="date" formControlName="date">
+
+      <div class="button-container">
+        <button type="submit">Dodaj recenzję</button>
+      </div>
+    </form>
+    <app-messages></app-messages>
+  </div>
+  <div class="added-reviews" #reviewsContainer>
+    <h1 class="title">Recenzje</h1>
+    <div class="underline"></div>
+    <h2 *ngIf="!this.reviews.length">Brak recenzji. Bądź pierwszym, który oceni to danie!</h2>
+    <div *ngIf="this.reviews.length">
+      <div class="review-name">{{currReview.name | uppercase}}</div>
+      <div class="quote-signs">&#10078;</div>
+      <div class="review-description">
+        {{currReview.description}}
+      </div>
+      <div class="review-nick">
+        ~ {{currReview.nick}}
+      </div>
+      <div class="review-date" *ngIf="currReview.date !== null">
+        {{currReview.date}}
+      </div>
+      <div class="arrows-container">
+        <button class="left-arrow" (click)="leftArrow()">&#8249;</button>
+        <button class="right-arrow" (click)="rightArrow()">&#8250;</button>
+      </div>
+      <button class="random-worker" (click)="randomReview()">Losowa recenzja</button>
+    </div>
+  </div>
+</div>
+

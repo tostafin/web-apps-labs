@@ -1,0 +1,33 @@
+.flex-container {
+  display: flex;
+  max-width: 100%;
+  flex-direction: column;
+}
+
+.flex-container img {
+  margin: 1em auto;
+}
+
+.flex-container figcaption {
+  margin-bottom: 1em;
+}
+
+.go-back-button {
+  width: 20vw;
+  margin: 2em auto;
+}
+
+.size-warning {
+  display: none;
+  color: red;
+}
+
+@media (max-width: 600px) {
+  .flex-container img {
+    max-width: 100%;
+  }
+
+  .size-warning {
+    display: block;
+  }
+}

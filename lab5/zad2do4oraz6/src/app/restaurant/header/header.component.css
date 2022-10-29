@@ -1,0 +1,44 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.many-reservations {
+  background-color: blue;
+}
+
+.few-reservations {
+  background-color: orange;
+}
+
+.currency {
+  display: block;
+  text-align: center;
+}
+
+.flex-container {
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  background-color: rgba(191,121,49,0.93);
+  color: white;
+  padding: 0 1em;
+}
+
+.dishes-cnt {
+  margin: auto 0;
+  font-weight: 600;
+}
+
+button {
+  margin: .5em;
+  padding: 0 1em;
+  font-size: 2em;
+  border: none;
+  background-color: rgba(66,191,145,0.93);
+  color: white;
+}
+
+button[disabled] {
+  background-color: rgba(38,72,202,0.36);
+}

@@ -1,0 +1,17 @@
+<app-header></app-header>
+<div class="cart-container">
+  <ul>
+    <li *ngFor="let order of orderDetailsService.ordersGrouped">
+      <div>
+        Nazwa: {{order[0]}}
+      </div>
+      <div>
+        Liczba zarezerwowanych dań: {{order[1]}}
+      </div>
+      <div>
+        Łączna suma: {{order[2]}} {{orderDetailsService.currCurrency}}
+      </div>
+    </li>
+  </ul>
+  Łączna suma koszyka: {{orderDetailsService.totalSum}} {{orderDetailsService.currCurrency}}
+</div>

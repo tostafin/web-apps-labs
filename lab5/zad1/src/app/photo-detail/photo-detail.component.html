@@ -1,0 +1,12 @@
+<figure class="flex-container">
+  <button class="go-back-button" (click)="goBack()">Powrót</button>
+  <p class="size-warning">
+    UWAGA: Przy rozdzielczości poniżej 600px rozmiary obrazków na ekranie nie są rzeczywiste, gdyż się nie mieszczą!
+    Należy patrzeć na rzeczywiste rozmiary podane na zdjęciach.
+  </p>
+  <img src="{{photo.url}}" alt="photo">
+  <img src="{{photo.thumbnailUrl}}" alt="photo-thumbnail">
+  <figcaption>{{photo.title}}</figcaption>
+  <figcaption>Zdjęcie nr {{photo.id}}</figcaption>
+  <figcaption>Album nr {{photo.albumId}}</figcaption>
+</figure>

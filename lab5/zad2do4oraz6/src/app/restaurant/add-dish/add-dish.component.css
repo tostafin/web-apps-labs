@@ -1,0 +1,36 @@
+:host {
+  display: block;
+  height: 93vh;
+  background-color: antiquewhite;
+}
+
+.add-dish-form {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  padding-top: 5em;
+  width: 100vw;
+}
+
+.title {
+  margin: auto 2em auto 1em;
+}
+
+label {
+  display: block;
+  margin: .5em 0;
+}
+
+p {
+  margin-top: 2em;
+}
+
+.correct-format {
+  font-size: .7em;
+  color: red;
+}
+
+.button-container {
+  margin-top: 2em;
+}
+
