@@ -1,0 +1,129 @@
+.flex-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.flex-container > div {
+    padding: 1em;
+    border: 1px solid black;
+    width: 40%;
+}
+
+.text-under-image {
+    display: block;
+    width: 39vw;
+}
+
+.container-1 {
+    position: relative;
+    width: 39vw;
+}
+
+img {
+    width: 39vw;
+    height: 36vw;
+}
+
+.overlay-1 {
+    position: absolute;
+    bottom: 0;
+    height: 20%;
+    width: 100%;
+    opacity: 0;
+    transition: 0.5s ease;
+    background-color: black;
+}
+
+.container-1:hover .overlay-1 {
+    opacity: 0.7;
+}
+
+.text-1 {
+    color: white;
+    font-size: 2vw;
+    width: 100%;
+    position: absolute;
+    text-align: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 1;
+}
+
+.container-2 {
+    position: relative;
+    width: 39vw;
+}
+
+.text-image-center {
+    display: block;
+    width: 39vw;
+}
+
+.overlay-2 {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 39vw;
+    opacity: 0;
+    transition: 0.75s ease;
+    background-color: lightskyblue;
+    background-image: url("https://drive.google.com/uc?export=view&id=1uMe7krvjEe-mu7x7uUp3eN8ev55XHvDc");
+    background-size: 12vw;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.container-2:hover .overlay-2 {
+    opacity: 0.8;
+}
+
+.text-2 {
+    color: white;
+    padding-top: 20vh;
+    font-size: 3vw;
+    font-weight: 600;
+    width: 100%;
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+@media (max-width: 900px) {
+    .flex-container {
+        display: flex;
+    }
+
+    .item1 {
+        order: 1;
+    }
+
+    .item2 {
+        order: 3;
+    }
+
+    .item3 {
+        order: 2;
+    }
+
+    .item4 {
+        order: 4;
+    }
+
+    .flex-container > div {
+        padding: 1em;
+        width: 100%;
+        text-align: center;
+        display: flex;
+        border: none;
+        align-items: center;
+        justify-content: center;
+    }
+
+}

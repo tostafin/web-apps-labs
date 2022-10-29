@@ -1,0 +1,41 @@
+.flex-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.flex-container > div {
+    flex-basis: 33.33%;
+    display: flex;
+    justify-content: center;
+}
+
+img, source {
+    width: 100%;
+}
+
+figcaption {
+    text-align: center;
+    font-size: 1vw;
+}
+
+@media (max-width: 1100px) {
+    .flex-container > div {
+        flex-basis: 50%;
+    }
+
+    figcaption {
+        text-align: center;
+        font-size: 1.5vw;
+    }
+}
+
+@media (max-width: 800px) {
+    .flex-container > div {
+        flex-basis: 100%;
+    }
+
+    figcaption {
+        text-align: center;
+        font-size: 3vw;
+    }
+}

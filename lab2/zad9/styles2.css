@@ -1,0 +1,47 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.flex-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+img {
+    width: 18vw;
+}
+
+.flex-container > nav > ul {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.flex-container > nav > ul > li {
+    padding: 0 1em 0 1em;
+    list-style: none;
+    font-size: 2vw;
+}
+
+.flex-container > nav > ul > li > a {
+    text-decoration: none;
+    color: darkgrey;
+}
+
+.flex-container > .invite {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 1em;
+}
+
+.flex-container > .invite > a {
+    color: white;
+    text-decoration: none;
+    background: linear-gradient(90deg, rgba(34,244,79,1) 5%, rgba(37,178,223,1) 65%);
+    padding: 1vw;
+    border-radius: 999vw;
+    font-size: 2.5vw;
+}

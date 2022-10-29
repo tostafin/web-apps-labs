@@ -1,0 +1,25 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+img {
+    min-height: 100%;
+    height: auto;
+    position: fixed;
+}
+
+section {
+    display: flex;
+}
+
+section > div {
+    overflow: hidden;
+    transition: 0.5s ease-in;
+    flex: 1;
+}
+
+section div:hover {
+    flex-grow: 4;
+}

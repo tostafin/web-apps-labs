@@ -1,0 +1,118 @@
+img, source {
+    width: 100%;
+    border-radius: 1rem 1rem 0 0;
+}
+
+.city {
+    font-size: 2vw;
+    font-weight: bold;
+}
+
+.description-no {
+    color: red;
+    margin-bottom: 1rem;
+    font-size: 1.5vw;
+}
+
+.description {
+    font-size: 1vw;
+}
+
+.description, hr {
+    margin-bottom: 2em;
+}
+
+hr {
+    color: white;
+    width: calc(100% - 3rem)
+}
+
+.city, .description-no, .description, .bottom-container {
+    padding: 0 1.5rem 0 1.5rem;
+}
+
+.flex-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+button {
+    background-color: orangered;
+    color: white;
+}
+
+figure {
+    box-shadow: 0 0 2rem grey;
+    border-radius: 1rem;
+}
+
+.image {
+    display: flex;
+    flex-direction: column;
+}
+
+.bottom-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2em;
+}
+
+.comments-and-likes {
+    font-size: 1rem;
+}
+
+.flex-container > div {
+    flex-basis: 33.33%;
+    display: flex;
+    justify-content: center;
+}
+
+@media (max-width: 1200px) {
+    .flex-container > div {
+        flex-basis: 50%;
+    }
+
+    .city {
+        font-size: 3vw;
+    }
+
+    .description-no {
+        font-size: 2vw;
+    }
+
+    .description {
+        font-size: 1.5vw;
+    }
+}
+
+@media (max-width: 800px) {
+    .flex-container > div {
+        flex-basis: 100%;
+    }
+
+    .city {
+        font-size: 4vw;
+    }
+
+    .description-no {
+        font-size: 3vw;
+    }
+
+    .description {
+        font-size: 2vw;
+    }
+}
+
+@media (max-width: 600px) {
+    .city {
+        font-size: 5vw;
+    }
+
+    .description-no {
+        font-size: 4vw;
+    }
+
+    .description {
+        font-size: 3vw;
+    }
+}

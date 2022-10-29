@@ -1,0 +1,42 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.flex-container {
+    display: flex;
+    border: 1px solid orange;
+}
+
+.flex-container > li {
+    padding: 15px 5px 15px 5px;
+    list-style: none;
+}
+
+.flex-container > li > a {
+    color: white;
+    text-decoration: none;
+}
+
+.item1, .item3, .item5, .item7, .item8 {
+    background-color: red;
+    flex-grow: 0;
+    border: 1px solid blue;
+}
+
+.item2, .item4 {
+    flex-grow: 1;
+    background-color: white;
+}
+
+.item6 {
+    flex-grow: 20;
+    background-color: white;
+}
+
+@media (max-width: 400px) {
+    html {
+        font-size: 70%;
+    }
+}

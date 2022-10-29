@@ -1,0 +1,209 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.flex-container {
+    display: flex;
+    justify-content: space-around;
+}
+
+.flex-container > div {
+    width: 30%;
+}
+
+.background-container {
+    position: relative;
+    margin-bottom: 2em;
+}
+
+.background-img {
+    height: 14rem;
+    background-size: cover;
+    background-blend-mode: screen;
+}
+
+.background-title {
+    font-size: 2em;
+    font-weight: 200;
+    position: absolute;
+    width: 65%;
+    right: 1rem;
+    bottom: 1rem;
+    color: white;
+    text-align: right;
+}
+
+span {
+    display: inline;
+    box-decoration-break: clone;
+    padding: 0.3rem 0.5rem;
+}
+
+.item1-title {
+    background-image: linear-gradient(90deg, rgba(244, 202, 62, 0.7) 12%, rgba(230, 131, 60, 0.7) 86%);
+}
+
+.item2-title {
+    background-image: linear-gradient(90deg, rgba(118, 244, 62, 0.7) 8%, rgba(58, 199, 81, 0.7) 64%);
+}
+
+.item3-title {
+    background-image: linear-gradient(90deg, rgba(26, 146, 235, 0.7) 23%, rgba(22, 63, 240, 0.7) 64%);
+}
+
+.description {
+    text-align: center;
+}
+
+ul {
+    display: inline-block;
+}
+
+li {
+    padding-bottom: 1em;
+    list-style: none;
+    margin: 0.5em 0;
+    border-bottom: 1px solid rgba(57, 62, 96, 0.36);
+    color: grey;
+}
+
+li:last-child {
+    border-bottom: none;
+}
+
+.item1 > .flip-card > .card-front > .background-container > .background-img {
+    background-image: linear-gradient(90deg, rgba(214, 111, 59, 1) 35%, rgba(236, 122, 40, 1) 48%), url("images/sea-1.jpg");
+}
+
+.item2 > .flip-card > .card-front > .background-container > .background-img {
+    background-image: linear-gradient(90deg, rgba(144, 243, 100, 1) 10%, rgba(71, 238, 99, 1) 64%), url("images/forest-1.jpg");
+}
+
+.item3 > .flip-card > .card-front > .background-container > .background-img {
+    background-image: linear-gradient(90deg, rgba(100, 189, 243, 1) 10%, rgba(71, 102, 238, 1) 64%), url("images/snow-1.jpg");
+}
+
+.background-img {
+    clip-path: polygon(0 0, 100% 0%, 100% 81%, 0% 100%);
+}
+
+.item1, .item2, .item3 {
+    position: relative;
+    background-color: transparent;
+    height: 30rem;
+    perspective: 1000px;
+}
+
+.flip-card {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.5s;
+    transform-style: preserve-3d;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.item1:hover .flip-card {
+    transform: rotateY(180deg);
+}
+
+.item2:hover .flip-card {
+    transform: rotateY(180deg);
+}
+
+.item3:hover .flip-card {
+    transform: rotateY(180deg);
+}
+
+.card-front, .card-back {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+
+.item1 > .flip-card > .card-back {
+    background: linear-gradient(90deg, rgba(214, 111, 59, 1) 35%, rgba(236, 122, 40, 1) 48%);
+    color: white;
+    transform: rotateY(180deg);
+}
+
+.item2 > .flip-card > .card-back {
+    background: linear-gradient(90deg, rgba(144, 243, 100, 1) 10%, rgba(71, 238, 99, 1) 64%);
+    color: white;
+    transform: rotateY(180deg);
+}
+
+.item3 > .flip-card > .card-back {
+    background: linear-gradient(90deg, rgba(100, 189, 243, 1) 10%, rgba(71, 102, 238, 1) 64%);
+    color: white;
+    transform: rotateY(180deg);
+}
+
+h5 {
+    color: white;
+    font-size: 3vw;
+    margin-top: 14vh;
+}
+
+h4 {
+    font-weight: 100;
+    font-size: 8vw;
+    margin-bottom: 8vh;
+}
+
+a {
+    color: grey;
+    text-decoration: none;
+    background-color: white;
+    padding: 1em;
+    margin: auto;
+    border-radius: 999vw;
+}
+
+@media (max-width: 1100px) {
+    .flex-container {
+        display: block;
+    }
+
+    .flex-container > div {
+        width: 40%;
+        margin: 1.5em auto;
+    }
+
+    .background-title {
+        width: 70%;
+    }
+}
+
+@media (max-width: 750px) {
+    .item1 > .flip-card > .card-front > .background-container > .background-img {
+        background-image: linear-gradient(90deg, rgba(214, 111, 59, 1) 35%, rgba(236, 122, 40, 1) 48%), url("images/sea-2.jpg");
+    }
+
+    .item2 > .flip-card > .card-front > .background-container > .background-img {
+        background-image: linear-gradient(90deg, rgba(144, 243, 100, 1) 10%, rgba(71, 238, 99, 1) 64%), url("images/forest-2.jpg");
+    }
+
+    .item3 > .flip-card > .card-front > .background-container > .background-img {
+        background-image: linear-gradient(90deg, rgba(100, 189, 243, 1) 10%, rgba(71, 102, 238, 1) 64%), url("images/snow-2.jpg");
+    }
+
+    .background-title {
+        width: 90%;
+    }
+}
+
+@media (max-width: 600px) {
+    .background-title {
+        width: 100%;
+    }
+
+    .flex-container {
+        font-size: 2.5vw;
+    }
+}
