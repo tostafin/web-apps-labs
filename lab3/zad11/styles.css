@@ -1,0 +1,63 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.board {
+    position: relative;
+    height: 100vh;
+    min-height: 800px;
+    overflow: hidden;
+    background-image: url("images/board-bg.jpg");
+    cursor: url("images/cursor.png"), crosshair;
+}
+
+.zombie {
+    left: 110%;
+    bottom: 100px;
+    background-image: url("images/walkingdead.png");
+    height: 312px;  /* spriteHeight */
+    width: 200px;  /* spriteWidth / zombieNo = 2000px / 10 = 200px */
+    position: absolute;
+    /* animation-name animation-duration animation-delay animation-iteration-count animation-timing-function */
+    animation: zombiesMoves .3s 0s infinite steps(9), walkFromRightToLeft 5s 0s 1 linear;
+}
+
+header {
+    display: flex;
+    margin: .5em;
+    justify-content: space-between;
+}
+
+.nick {
+    color: white;
+    user-select: none;
+}
+
+.next-game {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 5rem;
+    display: none;
+}
+
+.score {
+    user-select: none;
+    color: white;
+    text-align: right;
+    font-size: 4em;
+}
+
+@keyframes walkFromRightToLeft {
+    to {
+        left: -300px;
+    }
+}
+
+@keyframes zombiesMoves {
+    to {
+        background-position: -1800px 0;
+    }
+}

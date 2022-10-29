@@ -1,0 +1,77 @@
+{
+  "Produkty": [
+    {
+      "Telefony": [
+        {
+          "nazwa": "Huawei"
+        },
+        {
+          "nazwa": "Samsung"
+        },
+        {
+          "nazwa": "Nokia"
+        },
+        {
+          "nazwa": "Xiaomi"
+        }
+      ]
+    },
+    {
+      "Myszki": [
+        {
+          "nazwa": "Steelseries"
+        },
+        {
+          "nazwa": "Razer"
+        }
+      ]
+    },
+    {
+      "Talerze": [
+        {
+          "nazwa": "Ikea"
+        }
+      ]
+    },
+    {
+      "Soki": [
+        {
+          "nazwa": "Jupi"
+        },
+        {
+          "nazwa": "Cappy"
+        }
+      ]
+    },
+    {
+      "Owoce": [
+        {
+          "nazwa": "Winogrona"
+        },
+        {
+          "nazwa": "Mandarynki"
+        }
+      ]
+    },
+    {
+      "Telewizory": [
+        {
+          "nazwa": "Panasonic"
+        }
+      ]
+    },
+    {
+      "Rowery": []
+    },
+    {
+      "Klawiatury": [
+        {
+          "nazwa": "Razer"
+        },
+        {
+          "nazwa": "Dell"
+        }
+      ]
+    }
+  ]
+}

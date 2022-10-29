@@ -1,0 +1,67 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: rgba(219,240,248,0.93);
+}
+
+ul > li:not(:last-child) {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.5em;
+}
+
+.bin-icon {
+    background-color: forestgreen;
+    border-radius: 0.2em;
+    width: 1.5em;
+    text-align: center;
+    color: white;
+    text-decoration: none;
+}
+
+#container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#blocks-container > li {
+    margin: 1em auto;
+}
+
+li {
+    list-style: none;
+    background-color: white;
+    padding: 1em;
+    box-shadow: 0.2em 0.2em darkgrey;
+}
+
+#phone-book {
+    display: flex;
+}
+
+#name, #phone {
+    width: 20vw;
+    height: 4vh;
+}
+
+#button {
+    width: 15vw;
+    height: 4vh;
+    background-color: forestgreen;
+    border-radius: 0.5em;
+}
+
+#name-label, #phone-label {
+    color: darkgrey;
+    margin-right: 1em;
+}
+
+#button {
+    color: white;
+}

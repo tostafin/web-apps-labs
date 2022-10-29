@@ -1,0 +1,124 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: rgba(231,248,246,0.93);
+}
+
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: .5em 30vw 1em;
+    font-weight: bold;
+    font-size: 2em;
+    color: midnightblue;
+}
+
+h1 {
+    text-align: center;
+}
+
+.underline {
+    height: .1em;
+    width: 4em;
+    background: deepskyblue;
+}
+
+.flex-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 30vw;
+    padding: 2em;
+    background-color: white;
+    box-shadow: 0 0 1em darkgrey;
+    border-radius: .3em;
+}
+
+#avatar {
+    width: 10em;
+    height: 10em;
+    border-radius: 50%;
+    position: relative;
+    object-fit: cover;
+}
+
+figure {
+    width: 10em;
+    height: 10em;
+    position: relative;
+    margin-bottom: 4em;
+}
+
+figure:before {
+    content: "";
+    position: absolute;
+    top: -.3em;
+    right: -.6em;
+    background-color: deepskyblue;
+    border-radius: 50%;
+    width: 100%;
+    height: 100%;
+}
+
+figure:after {
+    content: "\275E";
+    position: absolute;
+    width: 1em;
+    height: 1em;
+    top: 0;
+    left: 0;
+    background-color: deepskyblue;
+    border-radius: 50%;
+    color: white;
+    display: flex;
+    justify-content: center;
+    font-size: 2.5em;
+}
+
+#name {
+    color: darkblue;
+}
+
+#position {
+    color: deepskyblue;
+}
+
+#description {
+    color: darkgrey;
+    margin-bottom: 1em;
+}
+
+.arrows-container {
+    margin-bottom: .5em;
+}
+
+#right-arrow, #left-arrow {
+    color: deepskyblue;
+    font-size: 2em;
+    background-color: transparent;
+    border-color: transparent;
+    cursor: pointer;
+}
+
+#random-worker {
+    background-color: rgba(186,245,248,0.93);
+    color: deepskyblue;
+    border-top: .2em solid deepskyblue;
+    border-left: .2em solid deepskyblue;
+    border-bottom: .2em solid darkblue;
+    border-right: .2em solid darkblue;
+    border-radius: .5em;
+    padding: .5em;
+    cursor: pointer;
+}
+
+section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}

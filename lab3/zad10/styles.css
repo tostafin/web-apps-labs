@@ -1,0 +1,41 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.flex-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.inner-list {
+    padding-left: 7em;
+    display: none;
+}
+
+.flex-container > ul {
+    flex-basis: 40%;
+    border: 1px solid black;
+}
+
+.flex-container > div {
+    flex-basis: 40%;
+    border: 1px solid black;
+}
+
+.flex-container li {
+    padding-top: 2em;
+    list-style: none;
+}
+
+.flex-container li:last-child {
+    padding-bottom: 2em;
+}
+
+.arrow {
+    font-size: 1.5em;
+    padding-left: 1em;
+    padding-right: .5em;
+    display: inline-block;
+}

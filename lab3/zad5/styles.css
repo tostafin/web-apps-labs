@@ -1,0 +1,36 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+div {
+    text-align: center;
+    font-size: 2rem;
+    margin: 0 auto;
+}
+#container {
+    margin: 2em auto;
+}
+
+#block-1 {
+    background-color: rgba(202, 245, 248, 0.93);
+    width: 8em;
+    padding-bottom: 1em;
+}
+
+#block-2 {
+    background-color: red;
+    margin: 0 2rem;
+    padding: 0 2rem 2rem 2rem;
+}
+
+#block-3 {
+    background-color: yellow;
+    margin: 0 1rem;
+    padding-bottom: 2rem;
+}
+
+li {
+    list-style: none;
+}

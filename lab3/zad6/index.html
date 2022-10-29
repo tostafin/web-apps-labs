@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+    <title>zad6</title>
+</head>
+<body>
+<div id="container">
+    <ul id="blocks-container">
+        <li>
+            <form action="" id="phone-book">
+                <div id="name-label">
+                    <label for="name">
+                        <span>IMIĘ I NAZWISKO</span><br>
+                        <input type="text" id="name" pattern="([A-ZÀ-Ž]{1})([a-zà-ž]{1,}) ([A-ZÀ-Ž]{1})([a-zà-ž]{1,})" required>
+                    </label>
+
+                </div>
+                <div id="phone-label">
+                    <label for="phone">
+                        <span>TELEFON</span><br>
+                        <input type="text" id="phone" pattern="[0-9]{3} [0-9]{3} [0-9]{3}" required>
+                    </label>
+
+                </div>
+                <div id="button-label">
+                    <label for="button">
+                        <span>&nbsp</span><br>
+                        <input type="submit" value="Dodaj" id="button">
+                    </label>
+
+                </div>
+            </form>
+        </li>
+    </ul>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,23 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    /*height: 200vh;*/
+}
+
+#container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    font-size: 30px;
+}
+
+#context-menu {
+    display: none;
+    position: fixed;
+    background-color: darkgrey;
+    font-size: 0.6em;
+}

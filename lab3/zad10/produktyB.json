@@ -1,0 +1,79 @@
+{
+  "Produkty": [
+    {
+      "Samochody": [
+        {
+          "nazwa": "Fiat"
+        },
+        {
+          "nazwa": "Mercedes"
+        },
+        {
+          "nazwa": "Lexus"
+        }
+      ]
+    },
+    {
+      "Rowery": [
+        {
+          "nazwa": "Kross"
+        },
+        {
+          "nazwa": "Merida"
+        },
+        {
+          "nazwa": "Unibike"
+        }
+      ]
+    },
+    {
+      "Soki": [
+        {
+          "nazwa": "Jupi"
+        },
+        {
+          "nazwa": "Kubuś"
+        },
+        {
+          "nazwa": "Tymbark"
+        }
+      ]
+    },
+    {
+      "Myszki": [
+        {
+          "nazwa": "Lenovo"
+        },
+        {
+          "nazwa": "Razer"
+        },
+        {
+          "nazwa": "Steelseries"
+        }
+      ]
+    },
+    {
+      "Telewizory": [
+        {
+          "nazwa": "Samsung"
+        },
+        {
+          "nazwa": "LG"
+        }
+      ]
+    },
+    {
+      "Owoce": []
+    },
+    {
+      "Warzywa": [
+        {
+          "nazwa": "Rzodkiweka"
+        }
+      ]
+    },
+    {
+      "Klawiatury": []
+    }
+  ]
+}

@@ -1,0 +1,95 @@
+{
+  "Produkty": [
+    {
+      "Samochody": [
+        {
+          "nazwa": "Fiat"
+        },
+        {
+          "nazwa": "BMW"
+        },
+        {
+          "nazwa": "Lexus"
+        }
+      ]
+    },
+    {
+      "Hulajnogi": []
+    },
+    {
+      "Słodycze": [
+        {
+          "nazwa": "Czekolada"
+        },
+        {
+          "nazwa": "Cukierki"
+        },
+        {
+          "nazwa": "Lizaki"
+        }
+      ]
+    },
+    {
+      "Soki": [
+        {
+          "nazwa": "Jupi"
+        },
+        {
+          "nazwa": "Kubuś"
+        },
+        {
+          "nazwa": "Hoop"
+        },
+        {
+          "nazwa": "Tymbark"
+        }
+      ]
+    },
+    {
+      "Ciasta": [
+        {
+          "nazwa": "Szarlotka"
+        },
+        {
+          "nazwa": "Makowiec"
+        }
+      ]
+    },
+    {
+      "Warzywa": [
+        {
+          "nazwa": "Marchewka"
+        },
+        {
+          "nazwa": "Sałata"
+        },
+        {
+          "nazwa": "Papryka"
+        }
+      ]
+    },
+    {
+      "Owoce": [
+        {
+          "nazwa": "Jabłko"
+        },
+        {
+          "nazwa": "Banan"
+        },
+        {
+          "nazwa": "Borówki"
+        }
+      ]
+    },
+    {
+      "Rolki": [
+        {
+          "nazwa": "K2"
+        },
+        {
+          "nazwa": "Rollerblade"
+        }
+      ]
+    }
+  ]
+}
