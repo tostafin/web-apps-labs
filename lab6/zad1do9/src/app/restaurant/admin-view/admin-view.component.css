@@ -1,0 +1,36 @@
+:host {
+  color: white;
+}
+
+section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 3em;
+}
+
+section > h1 {
+  margin: 1em 0;
+}
+
+.users {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.users mat-button-toggle-group {
+  margin-bottom: 1em;
+}
+
+.users > h3 {
+  text-align: center;
+  margin-bottom: .5em;
+}
+
+.users button {
+  margin-bottom: 4em;
+}

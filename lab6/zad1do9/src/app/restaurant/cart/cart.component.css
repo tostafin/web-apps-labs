@@ -1,0 +1,41 @@
+:host {
+  display: block;
+  background-color: rgba(40,40,40,0.3);
+  height: 93vh;
+  color: white;
+}
+
+.cart-container {
+  margin: 1em;
+}
+
+.cart-container table {
+  width: 100%;
+}
+
+.cart-bar {
+  text-align: center;
+  border-radius: 999em;
+  margin-bottom: 1em;
+}
+
+.many-reservations-cart-bar {
+  background-color: blue;
+}
+
+.few-reservations-cart-bar {
+  background-color: orange;
+}
+
+.cart-container tr.mat-footer-row {
+  font-weight: bold;
+}
+
+.button-container {
+  margin: 1em 0;
+  text-align: center;
+}
+
+.button-container button {
+  width: 10em;
+}

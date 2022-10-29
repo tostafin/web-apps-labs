@@ -1,0 +1,96 @@
+<div class="edit-dish-form">
+  <h1>Edytuj danie:</h1>
+  <form [formGroup]="editDishForm" (ngSubmit)="onSubmit()">
+    <mat-form-field appearance="legacy">
+      <mat-label>Nazwa dania</mat-label>
+      <input matInput id="name" type="text" formControlName="name">
+    </mat-form-field>
+    <div class="error-message">
+      <mat-error *ngIf="name?.touched && name?.invalid">
+        Nazwa dania musi zaczynać się od wielkiej litery, reszta liter mała, bez liczb, np. „Frytki”.
+      </mat-error>
+    </div>
+
+    <mat-form-field appearance="legacy">
+      <mat-label>Typ kuchni</mat-label>
+      <input matInput id="cuisine" type="text" formControlName="cuisine">
+    </mat-form-field>
+    <div class="error-message">
+      <mat-error *ngIf="cuisine?.touched && cuisine?.invalid">
+        Typ kuchni to jedno słowo (bez liczb) pisane małymi literami, np „polska”.
+      </mat-error>
+    </div>
+
+    <mat-form-field appearance="legacy">
+      <mat-label>Typ i kategoria</mat-label>
+      <input matInput id="typeAndCategory" type="text" formControlName="typeAndCategory">
+    </mat-form-field>
+    <div class="error-message">
+      <mat-error *ngIf="typeAndCategory?.touched && typeAndCategory?.invalid">
+        Typ i kategoria to jedno lub wiele słów (bez liczb) pisane małymi literami oddzielone przecinkami ze spacją,
+        np. „kolacja” lub „danie główne, przystawka, śniadanie”.
+      </mat-error>
+    </div>
+
+    <mat-form-field appearance="legacy">
+      <mat-label>Składniki</mat-label>
+      <input matInput id="ingredients" type="text" formControlName="ingredients">
+    </mat-form-field>
+    <div class="error-message">
+      <mat-error *ngIf="ingredients?.touched && ingredients?.invalid">
+        Składniki to co najmniej trzy słowa (bez liczb) pisane małymi literami oddzielone przecinkami ze spacją,
+        np. „jajka, mąka, woda”.
+      </mat-error>
+    </div>
+
+    <mat-form-field appearance="legacy">
+      <mat-label>Maksymalna liczba dań możliwych do wydania danego dnia</mat-label>
+      <input matInput id="maxDishesPerDay" type="number" formControlName="maxDishesPerDay">
+    </mat-form-field>
+    <div class="error-message">
+      <mat-error *ngIf="maxDishesPerDay?.touched && maxDishesPerDay?.invalid">
+        Należy podać liczbę całkowitą dodatnią, np. „3”
+      </mat-error>
+    </div>
+
+    <mat-form-field appearance="legacy">
+      <mat-label>Cena dania</mat-label>
+      <input matInput id="price" type="number" formControlName="price">
+    </mat-form-field>
+    <div class="error-message">
+      <mat-error *ngIf="price?.touched && price?.invalid">
+        Należy podać liczbę całkowitą dodatnią, np. „33”.
+      </mat-error>
+    </div>
+
+    <mat-form-field appearance="legacy">
+      <mat-label>Krótki opis</mat-label>
+      <input matInput id="description" type="text" formControlName="description">
+    </mat-form-field>
+    <div class="error-message">
+      <mat-error *ngIf="description?.touched && description?.invalid">
+        Opis musi zawierać co najmniej dwa słowa (bez znaków interpunkcyjnych), pierwszy wyraz musi zaczynać się od
+        wielkiej litery, całość musi zakończyć się kropką lub wykrzyknikiem, np. „Super danie!”.
+      </mat-error>
+    </div>
+
+    <mat-form-field appearance="legacy">
+      <mat-label>Linki do poglądowych zdjęć</mat-label>
+      <input matInput id="pictures" type="text" formControlName="pictures">
+    </mat-form-field>
+    <div class="error-message">
+      <mat-error *ngIf="pictures?.touched && pictures?.invalid">
+        Należy podać co najmniej jeden link do zdjęcia, każdy z linków oddzielić przecinkiem ze spacją. Każda kolejna
+        trójka reprezentuje kolejno: zdjęcie o największej rozdzielczości, zdjęcie o średniej rozdzielczości, zdjęcie
+        o małej rozdzielczości.
+      </mat-error>
+    </div>
+
+    <div class="button-container">
+      <mat-error class="error-message" *ngIf="!editDishForm.valid">
+        Wypełnij poprawnie cały formularz, aby edytować danie.
+      </mat-error>
+      <button mat-raised-button color="accent" type="submit" [disabled]="!editDishForm.valid">Aktualizuj</button>
+    </div>
+  </form>
+</div>

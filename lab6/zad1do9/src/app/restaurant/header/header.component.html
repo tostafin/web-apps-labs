@@ -1,0 +1,20 @@
+<header>
+  <div class="dishes-cnt"
+       [ngClass]="{'many-reservations': orderDetailsService.ordersCnt > 10,
+        'few-reservations': orderDetailsService.ordersCnt < 10}">
+    Łączna liczba zarezerwowanych dań: {{orderDetailsService.ordersCnt}}
+  </div>
+  <div class="currency">
+    <h1>Obecna waluta: {{orderDetailsService.currCurrency}}</h1>
+    <button
+      [ngClass]="{'many-reservations-button': orderDetailsService.ordersCnt > 10,
+       'few-reservations-button': orderDetailsService.ordersCnt < 10}"
+      (click)="orderDetailsService.changeCurrency()" [disabled]="orderDetailsService.currCurrency === '$'">$
+    </button>
+    <button
+      [ngClass]="{'many-reservations-button': orderDetailsService.ordersCnt > 10,
+       'few-reservations-button': orderDetailsService.ordersCnt < 10}"
+      (click)="orderDetailsService.changeCurrency()" [disabled]="orderDetailsService.currCurrency === '€'">€
+    </button>
+  </div>
+</header>

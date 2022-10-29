@@ -1,0 +1,37 @@
+.edit-dish-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  color: white;
+}
+
+.edit-dish-form h1 {
+  margin-bottom: 1em;
+}
+
+.edit-dish-form form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.edit-dish-form form mat-form-field {
+  width: 50vw;
+}
+
+.error-message {
+  margin-bottom: .5em;
+  text-align: center;
+}
+
+.button-container {
+  margin-top: 2em;
+}
+
+@media (max-width: 940px) {
+  .edit-dish-form form mat-form-field {
+    width: 90vw;
+  }
+}
+

@@ -1,0 +1,33 @@
+<app-header></app-header>
+<section class="cart-container">
+  <h1
+    class="cart-bar"
+    [ngClass]="{'many-reservations-cart-bar': orderDetailsService.ordersCnt > 10,
+     'few-reservations-cart-bar': orderDetailsService.ordersCnt < 10}">
+    Koszyk</h1>
+  <table mat-table [dataSource]="currOrdersArr" class="mat-elevation-z8">
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef>Nazwa</th>
+      <td mat-cell *matCellDef="let order">{{order[0]}}</td>
+      <td mat-footer-cell *matFooterCellDef>W sumie</td>
+    </ng-container>
+    <ng-container matColumnDef="orders-num">
+      <th mat-header-cell *matHeaderCellDef>Liczba zarezerwowanych dań</th>
+      <td mat-cell *matCellDef="let order">{{order[1][0]}}</td>
+      <td mat-footer-cell *matFooterCellDef>{{orderDetailsService.ordersCnt}}</td>
+    </ng-container>
+    <ng-container matColumnDef="dish-sum">
+      <th mat-header-cell *matHeaderCellDef>Łączna suma</th>
+      <td mat-cell *matCellDef="let order">{{order[1][2]}} {{orderDetailsService.currCurrency}}</td>
+      <td mat-footer-cell *matFooterCellDef>
+        {{orderDetailsService.totalSum}} {{orderDetailsService.currCurrency}}
+      </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    <tr mat-footer-row *matFooterRowDef="displayedColumns; sticky: true"></tr>
+  </table>
+  <div class="button-container">
+    <button mat-raised-button color="accent" (click)="onOrder()">Zamów</button>
+  </div>
+</section>

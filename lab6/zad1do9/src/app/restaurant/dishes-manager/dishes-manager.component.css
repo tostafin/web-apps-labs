@@ -1,0 +1,20 @@
+:host {
+  display: block;
+}
+
+.manager-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 93vh;
+}
+
+.manager-container a {
+  color: white;
+  font-size: 5em;
+}
+
+.manager-container a:hover {
+  background-color: rgba(98,98,98,0.66);
+}

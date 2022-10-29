@@ -1,0 +1,35 @@
+<section>
+  <h1>Tryb persystencji:</h1>
+  <mat-button-toggle-group [(ngModel)]="authService.currPersistence">
+    <mat-button-toggle value="local" (change)="setPersistence('local')">LOCAL</mat-button-toggle>
+    <mat-button-toggle value="session" (change)="setPersistence('session')">SESSION</mat-button-toggle>
+    <mat-button-toggle value="none" (change)="setPersistence('none')">NONE</mat-button-toggle>
+  </mat-button-toggle-group>
+</section>
+
+<section>
+  <h1>Role użytkowników:</h1>
+  <div class="users" *ngFor="let user of roleService.users">
+    <h3>{{user.username}}</h3>
+    <mat-button-toggle-group
+      multiple
+      [value]="roleService.userRoles[user.uid]">
+      <mat-button-toggle
+        *ngFor="let role of roles"
+        [value]="role"
+        (change)="changeUserRole(user.uid, role)">
+        {{role}}
+      </mat-button-toggle>
+    </mat-button-toggle-group>
+    <button *ngIf="!roleService.userBanStatus[user.uid]"
+            mat-raised-button color="warn"
+            (click)="openBanDialog(user.uid)">
+      Zbanuj
+    </button>
+    <button *ngIf="roleService.userBanStatus[user.uid]"
+            mat-raised-button color="accent"
+            (click)="openUnbanDialog(user.uid)">
+      Odbanuj
+    </button>
+  </div>
+</section>

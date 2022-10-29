@@ -1,0 +1,26 @@
+.login-container {
+  color: white;
+}
+
+.login-container form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+}
+
+.login-container h1 {
+  margin: 2rem 0;
+  text-align: center;
+}
+
+.mat-form-field {
+  width: 20em;
+}
+
+@media (max-width: 350px) {
+  .mat-form-field {
+    width: 80vw;
+  }
+}

@@ -1,0 +1,187 @@
+<header>
+  <div class="currency">
+    <h1>Zarządzanie potrawami</h1>
+    <h2>Przejdź do szczegołów dania, aby je edytować lub usunąć.</h2>
+    <h3>Obecna waluta: {{orderDetailsService.currCurrency}}</h3>
+    <button
+      [ngClass]="{'many-reservations-button': orderDetailsService.ordersCnt > 10,
+       'few-reservations-button': orderDetailsService.ordersCnt < 10}"
+      (click)="orderDetailsService.changeCurrency()" [disabled]="orderDetailsService.currCurrency === '$'">$
+    </button>
+    <button
+      [ngClass]="{'many-reservations-button': orderDetailsService.ordersCnt > 10,
+       'few-reservations-button': orderDetailsService.ordersCnt < 10}"
+      (click)="orderDetailsService.changeCurrency()" [disabled]="orderDetailsService.currCurrency === '€'">€
+    </button>
+  </div>
+</header>
+<div *ngIf="!showFilters" class="filters-visibility">
+  Pokaż filtry
+  <p class="arrow" (click)="changeFiltersVisibility()">&#9650;</p>
+</div>
+<div *ngIf="showFilters" class="filters-visibility">
+  Ukryj filtry
+  <p class="arrow" (click)="changeFiltersVisibility()">&#9660;</p>
+</div>
+<section *ngIf="showFilters" class="filters-container">
+  <h1
+    class="filter-bar"
+    [ngClass]="{'many-reservations-filter-bar': orderDetailsService.ordersCnt > 10,
+     'few-reservations-filter-bar': orderDetailsService.ordersCnt < 10}">
+    Filtry</h1>
+  <div class="filters">
+    <div class="dishes-filters">
+      <h4>Kuchnia:</h4>
+      <mat-checkbox *ngFor="let cuisine of uniqueCuisines"
+                    (change)="filterCuisine(cuisine)">{{cuisine}}
+      </mat-checkbox>
+    </div>
+    <div class="dishes-filters">
+      <h4>Cena:</h4>
+      <div class="labels">
+        <label>Od:</label>
+        <label>{{orderDetailsService.filterMinPrice}}</label>
+      </div>
+      <mat-slider
+        [min]="orderDetailsService.roundNum(orderDetailsService.minPrice * orderDetailsService.exchangeRate)"
+        [max]="orderDetailsService.filterMaxPrice"
+        (change)="filterDishes()"
+        [thumbLabel]="true"
+        [(ngModel)]="orderDetailsService.filterMinPrice">
+      </mat-slider>
+      <div class="labels">
+        <label>Do:</label>
+        <label>{{orderDetailsService.filterMaxPrice}}</label>
+      </div>
+      <mat-slider
+        [min]="orderDetailsService.filterMinPrice"
+        [max]="orderDetailsService.roundNum(orderDetailsService.maxPrice * orderDetailsService.exchangeRate)"
+        (change)="filterDishes()"
+        [thumbLabel]="true"
+        [(ngModel)]="orderDetailsService.filterMaxPrice">
+      </mat-slider>
+    </div>
+    <div class="dishes-filters">
+      <h4>Ocena:</h4>
+      <mat-checkbox (change)="filterRating(1)">
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>
+      </mat-checkbox>
+      <mat-checkbox (change)="filterRating(2)">
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>
+      </mat-checkbox>
+      <mat-checkbox (change)="filterRating(3)">
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>
+      </mat-checkbox>
+      <mat-checkbox (change)="filterRating(4)">
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star"></span>
+      </mat-checkbox>
+      <mat-checkbox (change)="filterRating(5)">
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+      </mat-checkbox>
+    </div>
+    <div class="dishes-filters">
+      <h4>Kategoria dania:</h4>
+      <mat-checkbox *ngFor="let category of uniqueCategories"
+                    (change)="filterCategories(category)">{{category}}
+      </mat-checkbox>
+    </div>
+  </div>
+</section>
+<section class="pagination">
+  <mat-form-field color="accent">
+    <mat-label>Liczba dań na stronie</mat-label>
+    <mat-select (selectionChange)="onNumOfPages($event)">
+      <mat-option
+        *ngFor="let num of dishesNumArr"
+        [value]="num"
+      >{{num}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field color="accent">
+    <mat-label>Strona</mat-label>
+    <mat-select (selectionChange)="changeCurrPage($event)">
+      <mat-option
+        *ngFor="let num of pages"
+        [value]="num"
+        [disabled]="currPage === num"
+      >{{num}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</section>
+<section class="flex-container">
+  <div class="card"
+       *ngFor="let dish of dishesFilteredComp"
+       [ngClass]="{'most-expensive': dish.name === mostExpensiveDish, 'cheapest': dish.name === cheapestDish}">
+    <picture>
+      <source routerLink="/dishes-edit/{{getDishUrl(dish.name)}}" media="(max-width): 600px"
+              srcset="{{dish.pictures[2]}}">
+      <source routerLink="/dishes-edit/{{getDishUrl(dish.name)}}" media="(max-width): 800px"
+              srcset="{{dish.pictures[1]}}">
+      <img routerLink="/dishes-edit/{{getDishUrl(dish.name)}}" src="{{dish.pictures[0]}}" alt="picture">
+    </picture>
+    <div class="desc">
+      <ul>
+        <li class="categories" *ngFor="let category of dish.typeAndCategory">{{category | uppercase}}</li>
+      </ul>
+      <h1>{{dish.name | uppercase}}</h1>
+      <div class="cuisine-and-reviews">
+        <div class="cuisine">
+          Kuchnia {{dish.cuisine | uppercase}}
+        </div>
+        <hr>
+      </div>
+      <h3>Składniki:</h3>
+      <ul>
+        <li class="ingredients" *ngFor="let ingredient of dish.ingredients">{{ingredient}}</li>
+      </ul>
+      <div class="description">
+        <h3>Opis: </h3>{{dish.description}}
+      </div>
+      <hr>
+      <div class="bottom">
+        <div class="price">
+          <h3>Cena: {{orderDetailsService.roundNum(dish.price * orderDetailsService.exchangeRate)}}
+            {{orderDetailsService.currCurrency}}
+          </h3>
+        </div>
+        <div class="buttons-and-cnt" *ngIf="orderDetailsService.orders.hasOwnProperty(dish.name)">
+          <div class="dish-message"
+               *ngIf="orderDetailsService.orders[dish.name][0] !== dish.maxDishesPerDay"
+               [ngClass]="{'few-dishes': dish.maxDishesPerDay - orderDetailsService.orders[dish.name][0] < 4}">Liczba
+            dostępnych
+            dań: {{dish.maxDishesPerDay - orderDetailsService.orders[dish.name][0]}}</div>
+          <div class="dish-message all-dishes-selected"
+               *ngIf="orderDetailsService.orders[dish.name][0] === dish.maxDishesPerDay">Wybrano
+            maksymalną liczbę
+            dań!
+          </div>
+          <div *ngIf="!roleService.canOrder()" class="cannot-order-message">
+            Zaloguj się, aby zamówić.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

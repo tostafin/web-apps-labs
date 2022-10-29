@@ -1,0 +1,143 @@
+:host {
+  background-color: black;
+  display: block;
+}
+
+.buttons-container {
+  display: flex;
+  position: absolute;
+  top: 9%;
+  right: 2%;
+}
+
+.back-button {
+  margin-left: 1em;
+}
+
+.edit-button {
+  margin-left: 1em;
+}
+
+.dish-detail-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.pictures-container {
+  margin: 6em 0 2em 0;
+  display: flex;
+  justify-content: center;
+}
+
+.pictures-container img, .pictures-container source {
+  width: 49vw;
+  height: 46vh;
+}
+
+.info-container {
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.title {
+  margin-bottom: .5em;
+}
+
+.dish-buttons-container {
+  display: inline-block;
+}
+
+.categories li {
+  list-style: none;
+}
+
+.num-of-orders {
+  margin: 0 .5em;
+}
+
+.dish-buttons-container {
+  margin-bottom: 1em;
+}
+
+.reviews {
+  font-size: 1.5em;
+}
+
+.few-dishes {
+  font-size: 1.5em;
+  color: red;
+}
+
+.scroll-arrow {
+  cursor: pointer;
+  font-size: 3em;
+}
+
+.underline {
+  height: .1em;
+  width: 40vw;
+  background-color: white;
+  margin: 1em auto;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.reviews-container {
+  color: white;
+  display: flex;
+  flex-direction: column;
+  padding: 6em 0;
+}
+
+.added-reviews {
+  text-align: center;
+  margin: 0 .5em;
+}
+
+.added-reviews-container {
+  word-wrap: break-word;
+  display: inline-block;
+  word-break: break-word;
+}
+
+.review-name {
+  margin-top: 2em;
+}
+
+.quote-signs {
+  font-size: 6em;
+}
+
+.review-description {
+  text-align: center;
+  font-style: italic;
+  margin-bottom: 1em;
+}
+
+.right-arrow, .left-arrow {
+  color: white;
+  font-size: 2em;
+  background-color: transparent;
+  border-color: transparent;
+  cursor: pointer;
+}
+
+.random-worker {
+  background-color: rgba(191, 191, 191, 0.93);
+  color: black;
+  border-radius: .5em;
+  padding: .5em;
+  cursor: pointer;
+}
+
+@media (max-width: 460px) {
+  .delete-button, .edit-button, .back-button {
+    font-size: 2.5vw;
+  }
+}

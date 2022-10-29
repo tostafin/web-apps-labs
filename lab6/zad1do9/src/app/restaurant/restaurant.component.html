@@ -1,0 +1,49 @@
+<nav class="main-nav">
+  <div class="left">
+    <a routerLinkActive="active" routerLink="/homepage">Home</a>
+    <a routerLinkActive="active" routerLink="/dishes">Menu</a>
+    <a *ngIf="roleService.canViewAdminView()" routerLinkActive="active" routerLink="/admin-view">Admin View</a>
+    <a *ngIf="roleService.canViewDishesManager()" routerLinkActive="active" routerLink="/dishes-manager">Dishes Manager</a>
+    <a *ngIf="roleService.canViewCart()" routerLinkActive="active" routerLink="/cart">Cart</a>
+  </div>
+  <div class="right">
+    <a *ngIf="!authService.logged" class="register" routerLinkActive="active" routerLink="/register">Register</a>
+    <a *ngIf="!authService.logged" class="login" routerLinkActive="active" routerLink="/login">Login</a>
+    <div class="username" *ngIf="authService.logged">{{authService.username}}</div>
+    <a *ngIf="authService.logged" (click)="authService.logout()" routerLink="/homepage" class="sign-out">Logout</a>
+  </div>
+</nav>
+<nav class="secondary-nav">
+  <button mat-icon-button [matMenuTriggerFor]="menu">
+    <mat-icon class="menu-icon">menu</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item routerLink="/homepage">
+      <mat-icon>home</mat-icon>
+      <span>Home</span>
+    </button>
+    <button mat-menu-item routerLink="/dishes">
+      <mat-icon>menu_book</mat-icon>
+      <span>Menu</span>
+    </button>
+    <button mat-menu-item routerLink="/admin-view" *ngIf="authService.roleService.canViewAdminView()">
+      <mat-icon>admin_panel_settings</mat-icon>
+      <span>Admin View</span>
+    </button>
+    <button mat-menu-item routerLink="/dishes-manager" *ngIf="authService.roleService.canViewDishesManager()">
+      <mat-icon>restaurant_menu</mat-icon>
+      <span>Dishes Manager</span>
+    </button>
+    <button mat-menu-item routerLink="/cart" *ngIf="authService.roleService.canViewCart()">
+      <mat-icon>shopping_cart</mat-icon>
+      <span>Cart</span>
+    </button>
+  </mat-menu>
+  <div class="right">
+    <a *ngIf="!authService.logged" class="register" routerLinkActive="active" routerLink="/register">Register</a>
+    <a *ngIf="!authService.logged" class="login" routerLinkActive="active" routerLink="/login">Login</a>
+    <div class="username" *ngIf="authService.logged">{{authService.username}}</div>
+    <a *ngIf="authService.logged" (click)="authService.logout()" routerLink="/homepage" class="sign-out">Logout</a>
+  </div>
+</nav>
+<router-outlet></router-outlet>

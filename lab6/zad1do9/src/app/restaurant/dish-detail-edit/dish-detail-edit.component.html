@@ -1,0 +1,89 @@
+<section class="buttons-container">
+  <button mat-raised-button color="warn" class="delete-button" (click)="openDeleteDialog()">Usuń danie</button>
+  <button mat-raised-button color="accent"
+          *ngIf="!editingDish; else closeDishEdit"
+          class="edit-button" (click)="editDish()">Edytuj danie</button>
+  <ng-template #closeDishEdit>
+    <button mat-raised-button color="accent" class="edit-button" (click)="editDish()">Zamknij edycję dania</button>
+  </ng-template>
+  <button mat-raised-button color="primary" class="back-button" (click)="goBack()">Powrót do listy dań</button>
+</section>
+<section class="dish-detail-container" *ngIf="dish !== undefined && orderDetailsService.orders[dish.name] !== undefined">
+  <div class="pictures-container">
+    <picture>
+      <source media="(max-width): 600px" srcset="{{dish.pictures[2]}}">
+      <source media="(max-width): 800px" srcset="{{dish.pictures[1]}}">
+      <img src="{{dish.pictures[0]}}" alt="picture1">
+    </picture>
+    <picture>
+      <source media="(max-width): 600px" srcset="{{dish.pictures[5]}}">
+      <source media="(max-width): 800px" srcset="{{dish.pictures[4]}}">
+      <img src="{{dish.pictures[3]}}" alt="picture2">
+    </picture>
+  </div>
+  <div class="edit-dish" *ngIf="editingDish">
+    <app-edit-dish class="info-container" [dish]="dish"></app-edit-dish>
+  </div>
+  <div class="info-container" *ngIf="!editingDish">
+    <h1 class="title">{{dish.name | uppercase}}</h1>
+    <div class="underline"></div>
+    <div class="description">
+      {{dish.description}}
+    </div>
+    <div class="underline"></div>
+    <div class="ingredients" *ngFor="let category of dish.typeAndCategory">
+      | {{category | uppercase}} |
+    </div>
+    <div class="underline"></div>
+    <div class="categories">
+      <span class="bold">Składniki:</span>
+      <ul>
+        <li *ngFor="let ingredients of dish.ingredients">{{ingredients}}</li>
+      </ul>
+    </div>
+    <div class="underline"></div>
+    <div class="price">
+      <span
+        class="bold">Cena: </span>{{orderDetailsService.roundNum(dish.price * orderDetailsService.exchangeRate)}}
+      {{orderDetailsService.currCurrency}}
+    </div>
+    <div class="underline"></div>
+    <div class="rating">
+      <div *ngIf="ratingService.numOfRatings != 0; else noRatings" class="stars-cnt">
+        <p>Średnia ocena: {{ratingService.meanRatings[dish.name]}}</p>
+        <p>Liczba ocen: {{ratingService.allRatings[dish.name].length}}</p>
+      </div>
+      <ng-template #noRatings>Brak ocen</ng-template>
+    </div>
+    <div class="underline"></div>
+    <div class="form-href">
+      <p>Recenzje dania</p>
+      <p class="scroll-arrow" (click)="scroll(reviewsContainer)">↓</p>
+    </div>
+  </div>
+</section>
+<section class="reviews-container">
+  <div class="added-reviews" #reviewsContainer>
+    <h1 class="title">Recenzje</h1>
+    <div class="underline"></div>
+    <h2 *ngIf="!this.reviews.length">Brak recenzji.</h2>
+    <div class="added-reviews-container" *ngIf="this.reviews.length">
+      <div class="review-name">{{currReview.name | uppercase}}</div>
+      <div class="quote-signs">&#10078;</div>
+      <div class="review-description">
+        {{currReview.description}}
+      </div>
+      <div class="review-nick">
+        ~ {{currReview.nick}}
+      </div>
+      <div class="review-date" *ngIf="currReview.date !== null">
+        {{currReview.date}}
+      </div>
+      <div class="arrows-container">
+        <button class="left-arrow" (click)="leftArrow()">&#8249;</button>
+        <button class="right-arrow" (click)="rightArrow()">&#8250;</button>
+      </div>
+      <button mat-raised-button color="accent" (click)="randomReview()">Losowa recenzja</button>
+    </div>
+  </div>
+</section>

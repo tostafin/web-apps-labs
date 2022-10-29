@@ -1,0 +1,33 @@
+.register-container {
+  color: white;
+}
+
+.register-container form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+}
+
+.register-container h1 {
+  margin: 2rem 0;
+  text-align: center;
+}
+
+.mat-form-field {
+  width: 20em;
+}
+
+.register-button {
+  background-color: #a23e31;
+  border-radius: 100em;
+  color: white;
+  padding: 1em;
+}
+
+@media (max-width: 350px) {
+  .mat-form-field {
+    width: 80vw;
+  }
+}
