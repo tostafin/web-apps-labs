@@ -1,0 +1,6 @@
+<div class="flex-container">
+  <input id="result" type="text" [(ngModel)]="currValue">
+  <div class="buttons-flex-container">
+    <button (click)="calculate($event)" *ngFor="let button of buttons">{{button}}</button>
+  </div>
+</div>

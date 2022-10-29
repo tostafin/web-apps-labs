@@ -1,0 +1,40 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.many-reservations {
+  background-color: cornflowerblue;
+}
+
+.few-reservations {
+  background-color: orange;
+}
+
+.currency {
+  display: block;
+  text-align: center;
+}
+
+.flex-container {
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  background-color: rgba(25,25,51,0.93);
+  color: white;
+}
+
+.dishes-cnt {
+  margin: auto 0;
+  font-weight: 600;
+}
+
+.currency-sign {
+  padding: .5em;
+}
+
+button {
+  margin: .5em;
+  padding: 0 1em;
+  font-size: 2em;
+}

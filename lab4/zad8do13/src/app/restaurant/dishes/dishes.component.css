@@ -1,0 +1,170 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+img, source {
+  width: 400px;
+  height: 200px;
+}
+
+.flex-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.flex-container > div {
+  display: flex;
+  justify-content: center;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  margin: 2em;
+  box-shadow: 0 0 2rem grey;
+}
+
+.desc {
+  padding: 1em;
+}
+
+.categories {
+  display: inline-flex;
+  background-color: darkgrey;
+  margin-right: .5em;
+  padding: .5em;
+  border-radius: 1em;
+}
+
+.ingredients {
+  list-style: none;
+}
+
+h1 {
+  padding: .3em 0;
+  margin: 0 auto;
+}
+
+.cuisine-and-reviews {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 4em;
+}
+
+.cuisine-and-reviews > div, ul {
+  flex-basis: 50%;
+}
+
+.description {
+  margin-top: 1em;
+}
+
+hr {
+  margin: 1em 0;
+}
+
+.bottom {
+  display: flex;
+  justify-content: space-between;
+}
+
+.buttons-container {
+  display: inline-block;
+}
+
+.buttons-container > button, .buttons-cnt {
+  border: 1px solid black;
+  padding: .5em;
+  margin: .5em;
+  border-radius: 20%;
+}
+
+.buttons-and-cnt {
+  text-align: right;
+}
+
+.few-dishes {
+  font-size: 1.5em;
+  color: red;
+}
+
+.most-expensive {
+  border: .4em solid green;
+}
+
+.cheapest {
+  border: .4em solid red;
+}
+
+.delete-dish {
+  background-color: red;
+  padding: 1em 0;
+  border-radius: 20%;
+  font-weight: bold;
+}
+
+.price {
+  display: flex;
+  flex-direction: column;
+}
+
+.reviews {
+  font-size: 1.5em;
+}
+
+.reviews:hover > span:before {
+  color: orange;
+  cursor: pointer;
+}
+
+.reviews > span:hover ~ span:before {
+  color: black;
+}
+
+.filter {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: rgba(232, 203, 87, 0.93);
+}
+
+.filter > h1 {
+  margin: 0;
+}
+
+.filter > div {
+  padding: 2em;
+}
+
+.cuisine-filter {
+  display: flex;
+  flex-direction: column;
+}
+
+.checked {
+  color: orange;
+}
+
+.filter ul {
+  list-style: none;
+}
+
+@media (max-width: 950px) {
+  .filter {
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+  }
+
+  .card {
+    flex-basis: 100%;
+  }
+
+  img, source {
+    width: 100%;
+    height: 200px;
+  }
+
+}

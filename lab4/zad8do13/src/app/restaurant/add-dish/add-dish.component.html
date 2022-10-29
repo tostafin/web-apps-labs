@@ -1,0 +1,37 @@
+<div class="add-dish-form">
+  <div class="title"><h1>Dodaj nowe danie:</h1></div>
+  <form [formGroup]="dishForm" (ngSubmit)="onSubmit()">
+    <label for="name">Nazwa dania: </label>
+    <input id="name" type="text" formControlName="name">
+    <div class="correct-format" *ngIf="name?.touched && name?.invalid">Nazwa dania musi zaczynać się od wielkiej litery, reszta liter mała, bez liczb, np. „Frytki”.</div>
+
+    <label for="cuisine">Typ kuchni: </label>
+    <input id="cuisine" type="text" formControlName="cuisine">
+    <div class="correct-format" *ngIf="cuisine?.touched && cuisine?.invalid">Typ kuchni to jedno słowo (bez liczb) pisane małymi literami, np „polska”.</div>
+
+    <label for="typeAndCategory">Typ i kategoria posiłku: </label>
+    <input id="typeAndCategory" type="text" formControlName="typeAndCategory">
+    <div class="correct-format" *ngIf="typeAndCategory?.touched && typeAndCategory?.invalid">Typ i kategoria to jedno lub wiele słów (bez liczb) pisane małymi literami oddzielone przecinkami ze spacją, np. „kolacja” lub „danie główne, przystawka, śniadanie”.</div>
+
+    <label for="ingredients">Lista składników: </label>
+    <input id="ingredients" type="text" formControlName="ingredients">
+    <div class="correct-format" *ngIf="ingredients?.touched && ingredients?.invalid">Składniki to co najmniej trzy słowa (bez liczb) pisane małymi literami oddzielone przecinkami ze spacją, np. „jajka, mąka, woda”.</div>
+
+    <label for="maxDishesPerDay">Maksymalna liczba dań możliwych do wydania danego dnia: </label>
+    <input id="maxDishesPerDay" type="number" formControlName="maxDishesPerDay">
+    <div class="correct-format" *ngIf="maxDishesPerDay?.touched && maxDishesPerDay?.invalid">Należy podać liczbę całkowitą dodatnią, np. „3”</div>
+
+    <label for="price">Cena dania: </label>
+    <input id="price" type="number" formControlName="price">
+    <div class="correct-format" *ngIf="price?.touched && price?.invalid">Należy podać liczbę całkowitą dodatnią, np. „33”.</div>
+
+    <label for="description">Krótki opis: </label>
+    <input id="description" type="text" formControlName="description">
+    <div class="correct-format" *ngIf="description?.touched && description?.invalid">Opis musi zawierać co najmniej dwa słowa (bez znaków interpunkcyjnych), pierwszy wyraz musi zaczynać się od wielkiej litery, całość musi zakończyć się kropką lub wykrzyknikiem, np. „Super danie!”.</div>
+
+    <label for="pictures">Linki do poglądowych zdjęć: </label>
+    <input id="pictures" type="text" formControlName="pictures">
+    <div class="correct-format" *ngIf="pictures?.touched && pictures?.invalid">Należy podać co najmniej dwa linki zdjęć.</div>
+    <button type="submit" [disabled]="!dishForm.valid">Submit</button>
+  </form>
+</div>

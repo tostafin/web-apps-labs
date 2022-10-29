@@ -1,0 +1,9 @@
+.cart-container {
+  background-color: rgba(10,7,87,0.93);
+  color: white;
+}
+
+li {
+  margin: 1em 0;
+  list-style: none;
+}

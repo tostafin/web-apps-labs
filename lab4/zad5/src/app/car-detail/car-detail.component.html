@@ -1,0 +1,33 @@
+<div class="flex-container">
+  <div id="brands">
+    <h2>Wybierz markę:</h2>
+    <ul>
+      <li *ngFor="let brand of brands" (click)="pickBrand($event, brand)">
+        {{brand}}
+      </li>
+    </ul>
+  </div>
+
+  <div *ngIf="brandChosen" #models>
+    <h2>Wybierz model:</h2>
+    <ul>
+      <li *ngFor="let model of possibleModels" (click)="pickModel($event, model)">
+        {{model}}
+      </li>
+    </ul>
+  </div>
+
+  <div *ngIf="modelChosen" #colors>
+    <h2>Wybierz kolor:</h2>
+    <ul>
+      <li *ngFor="let color of possibleColors" (click)="pickColor($event, color)">
+        <div class="color-square" [style.background]="color"></div>
+      </li>
+    </ul>
+  </div>
+</div>
+<app-display-car-detail [brand]="pickedBrand"
+                        [model]="pickedModel"
+                        [color]="pickedColor"
+                        [colorChosen]="colorChosen">
+</app-display-car-detail>

@@ -1,0 +1,17 @@
+<div class="cart-container">
+  <button (click)="orderDetailsService.groupOrders()">Odśwież koszyk 🛒</button>
+  <ul>
+    <li *ngFor="let order of orderDetailsService.ordersGrouped">
+      <div>
+        Nazwa: {{order[0]}}
+      </div>
+      <div>
+        Liczba zarezerwowanych dań: {{order[1]}}
+      </div>
+      <div>
+        Łączna suma: {{order[2]}} {{orderDetailsService.currCurrency}}
+      </div>
+    </li>
+  </ul>
+  Łączna suma koszyka: {{orderDetailsService.totalSum}} {{orderDetailsService.currCurrency}}
+</div>

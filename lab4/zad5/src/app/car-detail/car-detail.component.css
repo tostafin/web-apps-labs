@@ -1,0 +1,38 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+h2 {
+  margin-bottom: .5em;
+}
+
+li {
+  list-style: none;
+  padding: 1em 0;
+  background-color: darkgrey;
+  border: 1px solid black;
+  cursor: pointer;
+}
+
+.flex-container {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+.flex-container > div {
+  padding: .5em 2em;
+}
+
+.color-square {
+  width: 2em;
+  height: 2em;
+  margin: 0 auto;
+}
+
+@media (max-width: 800px) {
+  .flex-container {
+    display: block;
+  }
+}

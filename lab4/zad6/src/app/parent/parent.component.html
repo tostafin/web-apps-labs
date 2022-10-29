@@ -1,0 +1,6 @@
+<p>{{parentCnt}}</p>
+<app-child
+  (childCntEvent)="updateCnt($event)"
+  [buttonDisabled]="disableIncrementButton"
+  (incrementButtonEvent)="disableIncrementButton=$event">
+</app-child>

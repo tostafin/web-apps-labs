@@ -1,0 +1,132 @@
+<div class="filter">
+  <h1>Filtry</h1>
+  <div class="cuisine-filter">
+    Kuchnia:
+    <ul>
+      <li *ngFor="let cuisine of uniqueCuisines">
+        <input (change)="filterCuisine(cuisine)" type="checkbox">{{cuisine}}
+      </li>
+    </ul>
+  </div>
+  <div class="cuisine-filter">
+    Cena:
+    <label>Od:
+      <input type="number" placeholder="od" min="{{orderDetailsService.roundNum(orderDetailsService.minPrice * orderDetailsService.exchangeRate)}}" max="{{orderDetailsService.roundNum(orderDetailsService.maxPrice * orderDetailsService.exchangeRate)}}" [(ngModel)]="orderDetailsService.filterMinPrice">
+    </label>
+    <label>Do:
+      <input type="number" placeholder="do" min="{{orderDetailsService.roundNum(orderDetailsService.minPrice * orderDetailsService.exchangeRate)}}" max="{{orderDetailsService.roundNum(orderDetailsService.maxPrice * orderDetailsService.exchangeRate)}}" [(ngModel)]="orderDetailsService.filterMaxPrice">
+    </label>
+  </div>
+  <div class="cuisine-filter">
+    Ocena:
+    <ul class="stars">
+      <li>
+        <input type="checkbox" (change)="filterRating(1)">
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>
+      </li>
+      <li>
+        <input type="checkbox" (change)="filterRating(2)">
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>
+      </li>
+      <li>
+        <input type="checkbox" (change)="filterRating(3)">
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>
+      </li>
+      <li>
+        <input type="checkbox" (change)="filterRating(4)">
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star"></span>
+      </li>
+      <li>
+        <input type="checkbox" (change)="filterRating(5)">
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+      </li>
+    </ul>
+  </div>
+  <div class="cuisine-filter">
+    Kategoria dania:
+    <ul>
+      <li *ngFor="let category of uniqueCategories">
+        <input (change)="filterCategories(category)" type="checkbox">{{category}}
+      </li>
+    </ul>
+  </div>
+</div>
+<section class="flex-container">
+  <div class="card" *ngFor="let dish of (dishes | cuisine : this.cuisineFilter | category : this.categoryFilter | price : this.orderDetailsService.filterMinPrice : this.orderDetailsService.filterMaxPrice : orderDetailsService.exchangeRate | rating : this.ratingFilter : this.ratings)"
+       [ngClass]="{'most-expensive': dish.name === mostExpensiveDish, 'cheapest': dish.name === cheapestDish}">
+    <picture>
+      <source media="(max-width): 600px" srcset="{{dish.pictures[2]}}">
+      <source media="(max-width): 800px" srcset="{{dish.pictures[1]}}">
+      <img src="{{dish.pictures[0]}}" alt="1">
+    </picture>
+    <div class="desc">
+      <ul>
+        <li class="categories" *ngFor="let category of dish.typeAndCategory">{{category}}</li>
+      </ul>
+      <h1>{{dish.name | uppercase}}</h1>
+      <div class="cuisine-and-reviews">
+        <div class="cuisine">Kuchnia {{dish.cuisine | uppercase}}</div>
+        <div class="reviews">Ocena:
+          <span [ngClass]="{'checked': this.ratings[dish.name] >= 1}" class="fa fa-star"
+                (click)="updateRating(dish, 1)"></span>
+          <span [ngClass]="{'checked': this.ratings[dish.name] >= 2}" class="fa fa-star"
+                (click)="updateRating(dish, 2)"></span>
+          <span [ngClass]="{'checked': this.ratings[dish.name] >= 3}" class="fa fa-star"
+                (click)="updateRating(dish, 3)"></span>
+          <span [ngClass]="{'checked': this.ratings[dish.name] >= 4}" class="fa fa-star"
+                (click)="updateRating(dish, 4)"></span>
+          <span [ngClass]="{'checked': this.ratings[dish.name] >= 5}" class="fa fa-star"
+                (click)="updateRating(dish, 5)"></span>
+        </div>
+      </div>
+      <h3>Składniki:</h3>
+      <ul>
+        <li class="ingredients" *ngFor="let ingredient of dish.ingredients">{{ingredient}}</li>
+      </ul>
+      <div class="description">
+        <h3>Opis: </h3>{{dish.description}}
+      </div>
+      <hr>
+      <div class="bottom">
+        <div class="price">
+          Cena: {{orderDetailsService.roundNum(dish.price * orderDetailsService.exchangeRate)}} {{orderDetailsService.currCurrency}}
+          <button class="delete-dish" (click)="deleteDish(dish)">Usuń</button>
+        </div>
+        <div class="buttons-and-cnt">
+          <div class="buttons-container">
+            <button (click)="removeOrder(dish)" [hidden]="checkIfMinDishCnt(dish)">–</button>
+            <span>{{dishesCnt[dish.name]}}</span>
+            <button (click)="addOrder(dish)" [hidden]="checkIfMaxDishCnt(dish)">+</button>
+          </div>
+          <div class="dish-message" *ngIf="dishesCnt[dish.name] !== dish.maxDishesPerDay"
+               [ngClass]="{'few-dishes': dish.maxDishesPerDay - dishesCnt[dish.name] < 4}">Liczba dostępnych
+            dań: {{dish.maxDishesPerDay - dishesCnt[dish.name]}}</div>
+          <div class="dish-message" *ngIf="dishesCnt[dish.name] === dish.maxDishesPerDay">Wybrano maksymalną liczbę
+            dań!
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<app-add-dish (newDishEvent)="updateDishes($event)"></app-add-dish>
